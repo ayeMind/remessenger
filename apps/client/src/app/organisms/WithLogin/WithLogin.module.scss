@@ -1,0 +1,23 @@
+.page {
+    width: 100vw;
+    min-height: 100vh;
+    font-family: "Rubik";
+    display: flex;
+    background-color: #100e17;
+    color: #bebebe;
+}
+
+.panel-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    float: left;
+    width: 264px;
+    background-color: #191621;
+}
+
+.chat-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
