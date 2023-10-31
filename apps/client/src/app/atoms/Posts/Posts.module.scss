@@ -7,9 +7,14 @@
 }
 
 .posts-container {
-    overflow-y: auto;
-    width: 28rem;
     height: 90vh;
+    padding-left: 12px;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &:hover {
+        scrollbar-width: thin;
+    }
 }
 
 .avatar {

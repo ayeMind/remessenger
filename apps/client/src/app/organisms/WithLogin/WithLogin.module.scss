@@ -11,15 +11,25 @@
 
 .panel-container {
     height: 100vh;
-    overflow-y: scroll;
-    scrollbar-width: thin;
     float: left;
     width: max(12vw, 200px);
     background-color: colors.$additionalColor;
+    overflow: hidden;
+    scrollbar-width: thin;
+    
+    &:hover {
+        overflow-y: auto;
+    }
 }
 
 .chat-container {
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &:hover {
+        scrollbar-width: thin;
+    }
 }

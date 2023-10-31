@@ -3,15 +3,15 @@ import { useChat } from './store';
 import Posts from '../../atoms/Posts/Posts';
 import styles from './Chat.module.scss'
 import { io } from 'socket.io-client';
+import { SendHorizontal } from 'lucide-react';
 
 const socket = io('ws://localhost:3000/chat');
 
 export default function Chat() {
   const [postList, setPostList] = useState<string[]>([]);
   const [isConnected, setIsConnected] = useState(socket.connected);
-  const [message, setMessage] = useState(' ');
+  const [message, setMessage] = useState('');
   const selectedUser = useChat((state) => state.user);
-
 
   useEffect(() => {
     function onConnect() {
@@ -38,8 +38,12 @@ export default function Chat() {
     };
   }, []);
 
-  function messagePost(event: React.MouseEvent<HTMLElement>) {
+  function messagePost(event: React.MouseEvent) {
     event.preventDefault();
+    if (!message.trim()) {
+      setMessage("");
+      return;
+    }
     socket.send(message)
     console.log("sended");
     setMessage('');
@@ -47,21 +51,19 @@ export default function Chat() {
 
   return (
     <div>
-      <div>
         {selectedUser.user_id !== 0 ? (
           <div className={styles["chat"]}>
             <p>{selectedUser.user_name}</p>
             <Posts postList={postList} />
-            <form className=''>
+            <form className={styles["input-form"]}>
               <input
-                type="text"
                 value={message}
                 placeholder='Write a message...'
                 className={styles["input-message"]}
                 onChange={(e) => setMessage(e.target.value)}
               />
-              <button type="submit" onClick={messagePost}>
-                Post message
+              <button type="submit" onClick={messagePost} className={styles["send-message-btn"]}>
+                <SendHorizontal color='#bebebe' />
               </button>
             </form>
 
@@ -69,7 +71,6 @@ export default function Chat() {
         ) : (
           ' '
         )}
-      </div>
     </div>
   );
 }
