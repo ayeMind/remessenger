@@ -12,6 +12,14 @@ div:only-child {
     overflow-x: hidden;
 }
 
+.chat-info {
+    background-color: colors.$additionalColor;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
 .input-form {
     display: grid;
     grid-template: 1fr / 1fr auto;

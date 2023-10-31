@@ -53,7 +53,9 @@ export default function Chat() {
     <div>
         {selectedUser.user_id !== 0 ? (
           <div className={styles["chat"]}>
-            <p>{selectedUser.user_name}</p>
+            <div className={styles["chat-info"]}>
+              <p>{selectedUser.user_name}</p>
+            </div>
             <Posts postList={postList} />
             <form className={styles["input-form"]}>
               <input
