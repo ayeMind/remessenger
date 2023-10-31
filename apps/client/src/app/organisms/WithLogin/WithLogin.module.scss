@@ -1,10 +1,12 @@
+@use "../../../styles.scss" as colors;
+
 .page {
     width: 100vw;
     min-height: 100vh;
     font-family: "Rubik";
     display: flex;
-    background-color: #100e17;
-    color: #bebebe;
+    background-color: colors.$mainColor;
+    color: colors.$textColor;
 }
 
 .panel-container {
@@ -12,8 +14,8 @@
     overflow-y: scroll;
     scrollbar-width: thin;
     float: left;
-    width: 264px;
-    background-color: #191621;
+    width: max(12vw, 200px);
+    background-color: colors.$additionalColor;
 }
 
 .chat-container {

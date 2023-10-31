@@ -1,6 +1,22 @@
+@use "../../../styles.scss" as colors;
+
 .chat {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+}
+
+.input-message {
+    background-color: colors.$additionalColor;
+    color: colors.$textColor;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: darkgray;
+    outline: none;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-bottom: 12px;
+    width: 248px;
+    height: 22px;
 }

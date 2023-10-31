@@ -1,8 +1,10 @@
+@use "../../../styles.scss" as colors;
+
 .sticky-container {
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: #191621;
+    background-color: colors.$additionalColor;
 }
 
 .search-container {
@@ -15,8 +17,8 @@
     width: 80%;
     height: 32px;
     padding: 0px 8px;
-    background-color: #191621;
-    color: #bebebe;
+    background-color: colors.$additionalColor;
+    color: colors.$textColor;
     outline: none;
     border-width: 2px;
     border-radius: 4%;

@@ -1,28 +1,21 @@
-// <div className="flex items-center justify-center w-screen h-screen bg-[#100e17] text-[#bebebe]">
-//         <div className="relative w-[20%] bg-[#191621] h-[50%] rounded-md font-[Rubik] flex justify-center items-center">
-//             <p className="absolute text-xl top-3">Вход</p>
-//             <form className="flex flex-col gap-3">
-//                 <input type="email" placeholder="Input email" className="pl-1 bg-[#100e17]" value={login} onChange={(e) => setLogin(e.target.value)}/>
-//                 <button type="submit" onClick={logInClick}>Log In</button>
-//             </form>
-//         </div>
-//     </div>
+@use "../../../styles.scss" as colors;
 
 .page {
     width: 100vw;
     height: 100vh;
+    background-color: $mainColor;
     font-family: "Rubik";
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #bebebe;
+    color: colors.$textColor;
 }
 
 .popup {
     position: relative;
     width: 20%;
     height: 50%;
-    background-color: #191621;
+    background-color: colors.$additionalColor;
     border-radius: 2%;
     display: flex;
     justify-content: center;
@@ -42,5 +35,5 @@
 
 .email-input {
     padding-left: 6px;
-    background-color: #100e17;
+    background-color: colors.$mainColor;
 }

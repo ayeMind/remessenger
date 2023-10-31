@@ -56,6 +56,8 @@ export default function Chat() {
               <input
                 type="text"
                 value={message}
+                placeholder='Write a message...'
+                className={styles["input-message"]}
                 onChange={(e) => setMessage(e.target.value)}
               />
               <button type="submit" onClick={messagePost}>
