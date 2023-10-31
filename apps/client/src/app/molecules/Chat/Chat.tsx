@@ -1,33 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useChat } from './store';
 import Posts from '../../atoms/Posts/Posts';
 import styles from './Chat.module.scss'
+import { io } from 'socket.io-client';
 
-const ws = new WebSocket('ws://localhost:8000/ws/1');
+const socket = io('ws://localhost:3000/chat');
 
 export default function Chat() {
-  const [postList, setPostList] = useState([]);
-
-  ws.addEventListener('open', () => {
-    console.log('loaded!');
-
-    ws.onmessage = async (e) => {
-     console.log(e);
-     const response = e.data
-
-      console.log(response);
-      if (response) {
-        setPostList((prev) => [...prev, response])
-      }
-    };
-  });
-
-  const selectedUser = useChat((state) => state.user);
+  const [postList, setPostList] = useState<string[]>([]);
+  const [isConnected, setIsConnected] = useState(socket.connected);
   const [message, setMessage] = useState(' ');
+  const selectedUser = useChat((state) => state.user);
+
+
+  useEffect(() => {
+    function onConnect() {
+      setIsConnected(true);
+      console.log("You connect!")
+    }
+
+    function onDisconnect() {
+      setIsConnected(false);
+    }
+
+    function onMessage(message: string) {
+      setPostList((prev) => [...prev, message])
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+    socket.on('message', onMessage);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+      socket.off('message', onMessage)
+    };
+  }, []);
 
   function messagePost(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    ws.send(message)
+    socket.send(message)
     console.log("sended");
     setMessage('');
   }
