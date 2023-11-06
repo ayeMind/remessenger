@@ -14,11 +14,16 @@
     }
 }
 
+.hover-overflow-hidden {
+    &:hover {
+        overflow-y: hidden;
+    }
+}
+
 .resize-handle {
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 0;
-    width: 12px; /* Ширина ручки изменения размера */
-    height: 100%;
+    width: 10px; 
+    height: 100%; 
     cursor: col-resize;
   }
