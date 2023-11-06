@@ -46,3 +46,15 @@ div:only-child {
     align-items: center;
     margin-right: 8px;
 }
+
+.chat-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &:hover {
+        scrollbar-width: thin;
+    }
+}

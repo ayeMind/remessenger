@@ -1,0 +1,24 @@
+@use "../../../styles.scss" as colors;
+
+.panel-container {
+    height: 100vh;
+    flex-shrink: 0;
+    background-color: colors.$additionalColor;
+    overflow: hidden;
+    scrollbar-width: thin;
+    position: relative;
+    max-width: 25vw;
+    min-width: 200px;
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px; /* Ширина ручки изменения размера */
+    height: 100%;
+    cursor: col-resize;
+  }

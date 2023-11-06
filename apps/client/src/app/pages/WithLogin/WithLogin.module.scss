@@ -1,0 +1,11 @@
+@use "../../../styles.scss" as colors;
+
+.page {
+    width: 100vw;
+    min-height: 100vh;
+    font-family: "Rubik";
+    display: flex;
+    background-color: colors.$mainColor;
+    color: colors.$textColor;
+}
+

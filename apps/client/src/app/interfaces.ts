@@ -12,3 +12,5 @@ export interface ChatStore {
     user: User;
     chooseUser: (user: User) => void;
 }
+
+  

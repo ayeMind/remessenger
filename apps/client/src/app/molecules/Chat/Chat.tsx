@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useChat } from './store';
 import Posts from '../../atoms/Posts/Posts';
-import styles from './Chat.module.scss'
+import styles from './Chat.module.scss';
 import { io } from 'socket.io-client';
 import { SendHorizontal } from 'lucide-react';
 
@@ -16,7 +16,7 @@ export default function Chat() {
   useEffect(() => {
     function onConnect() {
       setIsConnected(true);
-      console.log("You connect!")
+      console.log('You connect!');
     }
 
     function onDisconnect() {
@@ -24,7 +24,7 @@ export default function Chat() {
     }
 
     function onMessage(message: string) {
-      setPostList((prev) => [...prev, message])
+      setPostList((prev) => [...prev, message]);
     }
 
     socket.on('connect', onConnect);
@@ -34,45 +34,48 @@ export default function Chat() {
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
-      socket.off('message', onMessage)
+      socket.off('message', onMessage);
     };
   }, []);
 
   function messagePost(event: React.MouseEvent) {
     event.preventDefault();
     if (!message.trim()) {
-      setMessage("");
+      setMessage('');
       return;
     }
-    socket.send(message)
-    console.log("sended");
+    socket.send(message);
+    console.log('sended');
     setMessage('');
   }
 
   return (
-    <div>
-        {selectedUser.user_id !== 0 ? (
-          <div className={styles["chat"]}>
-            <div className={styles["chat-info"]}>
-              <p>{selectedUser.user_name}</p>
-            </div>
-            <Posts postList={postList} />
-            <form className={styles["input-form"]}>
-              <input
-                value={message}
-                placeholder='Write a message...'
-                className={styles["input-message"]}
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <button type="submit" onClick={messagePost} className={styles["send-message-btn"]}>
-                <SendHorizontal color='#bebebe' />
-              </button>
-            </form>
-
+    <main className={styles['chat-container']}>
+      {selectedUser.user_id !== 0 ? (
+        <div className={styles['chat']}>
+          <div className={styles['chat-info']}>
+            <p>{selectedUser.user_name}</p>
           </div>
-        ) : (
-          ' '
-        )}
-    </div>
+          <Posts postList={postList} />
+          <form className={styles['input-form']}>
+            <input
+              value={message}
+              placeholder="Write a message..."
+              className={styles['input-message']}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button
+              type="submit"
+              onClick={messagePost}
+              className={styles['send-message-btn']}
+            >
+              <SendHorizontal color="#bebebe" />
+            </button>
+          </form>
+        </div>
+      ) : (
+        ' '
+      )}
+    </main>
   );
 }
