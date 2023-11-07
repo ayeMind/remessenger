@@ -16,8 +16,8 @@ model Chat {
 model Message {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
+  updatedAt DateTime @default(now()) @updatedAt
+  text      String   @db.Text
   Author    User?    @relation(fields: [userId], references: [id])
   userId    Int?
   Chat      Chat?    @relation(fields: [chatId], references: [id])

@@ -5,6 +5,13 @@ export interface User {
   password: string;
 }
 
+export interface Message {
+  text: string;
+  Author: number;
+  Chat: number;
+  createdAt: Date;
+}
+
 export interface ChatStore {
   user: User;
   chooseUser: (user: User) => void;

@@ -23,13 +23,13 @@ export class ChatService {
     return this.#clients.find((client) => client.id === id);
   }
 
-  async createMessage(data: Prisma.ChatCreateInput): Promise<Chat> {
-    return await this.prisma.chat.create({
+  async createMessage(data: Prisma.MessageCreateInput): Promise<Chat> {
+    return await this.prisma.message.create({
       data,
     });
   }
 
   async getMessages(): Promise<Chat[]> {
-    return await this.prisma.chat.findMany();
+    return await this.prisma.message.findMany();
   }
 }

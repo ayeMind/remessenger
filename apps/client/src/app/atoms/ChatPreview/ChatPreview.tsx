@@ -5,16 +5,17 @@ export default function ChatPreview({
   id,
   name,
   email,
+  password,
 }: {
   id: number;
   name: string;
   email: string;
+  password: string;
 }) {
   const selectUser = useChat((state) => state.chooseUser);
 
   const openChatClick = () => {
-    console.log(id);
-    selectUser({ id: id, name: name, email: email });
+    selectUser({ id: id, name: name, email: email, password: password });
   };
 
   return (

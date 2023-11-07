@@ -32,10 +32,12 @@ export class ChatGateway
   @SubscribeMessage('sendMessage')
   async handleSendMessage(
     client: Socket,
-    payload: Prisma.ChatCreateInput
+    payload: Prisma.MessageCreateInput
   ): Promise<void> {
     await this.chatService.createMessage(payload);
-    this.server.emit('message', payload);
+    console.log(payload);
+
+    this.server.emit('recMessage', payload);
   }
 
   handleConnection(@ConnectedSocket() client: Socket) {
