@@ -1,13 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import WithLogin from './pages/WithLogin/WithLogin';
-
+import WithoutLogin from './pages/WithoutLogin/WithoutLogin';
+import { useLogin } from './pages/store';
 
 export function App() {
-  return (
-    <div>
-      <WithLogin />
-    </div>
-  );
+  const { isLogged, user } = useLogin();
+  return <div>{isLogged ? <WithLogin user={user} /> : <WithoutLogin />}</div>;
 }
 
 export default App;
