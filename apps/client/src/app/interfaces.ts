@@ -1,11 +1,15 @@
 export interface User {
-  user_id: number;
-  user_name: string;
-}
-
-export interface ChatListItem {
   id: number;
   name: string;
+  email: string;
+  password: string;
+}
+
+export interface Message {
+  text: string;
+  Author: number;
+  Chat: number;
+  createdAt: Date;
 }
 
 export interface ChatStore {
@@ -14,8 +18,16 @@ export interface ChatStore {
 }
 
 export interface SearchFilter {
-  filtered: ChatListItem[];
-  filter: (search: string) => void;
+  filtered: User[];
+  filter: (userList: User[], search: string) => void;
   search: string;
   setSearch: (search: string) => void;
+}
+
+export interface LoginStore {
+  isLogged: boolean;
+  login: () => void;
+  logout: () => void;
+  user: User | null;
+  setUser: (user: User) => void;
 }
