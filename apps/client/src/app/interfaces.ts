@@ -11,7 +11,7 @@ export interface ChatStore {
 
 export interface SearchFilter {
   filtered: User[];
-  filter: (search: string) => void;
+  filter: (userList: User[], search: string) => void;
   search: string;
   setSearch: (search: string) => void;
 }

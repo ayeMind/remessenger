@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchChat from '../../atoms/SearchChat/SearchChat';
 import styles from './SelectChatPanel.module.scss';
 import ChatPreviewList from '../../molecules/ChatPreviewList/ChatPreviewList';
 import { useSearchFilter } from '../../atoms/SearchChat/store';
+import getUserList from '../../api/getUserList';
 
 export default function SelectChatPanel() {
-  const { filtered } = useSearchFilter(); // filtered is a list of ChatListItem with search filter
+  const { filtered, filter } = useSearchFilter(); // filtered is a list of ChatListItem with search filter
+
+  useEffect(() => {
+    const fetchUserList = async () => {
+      const userList = await getUserList();
+      filter(userList, '');
+    };
+    fetchUserList();
+  }, []);
 
   const [panelWidth, setPanelWidth] = useState(250);
   function handleMouseMove(e: MouseEvent) {
