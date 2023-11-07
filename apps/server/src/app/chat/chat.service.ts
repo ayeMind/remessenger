@@ -1,21 +1,35 @@
-import { Injectable } from "@nestjs/common";
-import { Socket } from "socket.io";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../database/prisma.service';
+import { Chat, Prisma } from '@prisma/client';
+import { Socket } from 'socket.io';
 
-@Injectable() 
+@Injectable()
 export class ChatService {
-    #clients: Socket[] = []
+  constructor(private readonly prisma: PrismaService) {}
 
-    addClient (client: Socket): void {
-        this.#clients.push(client)
-        console.log(this.#clients.length)
-    }
+  #clients: Socket[] = [];
 
-    removeClient (id: string) {
-        this.#clients = this.#clients.filter( client => client.id !== id)
-        console.log(this.#clients.length)
-    }
+  addClient(client: Socket): void {
+    this.#clients.push(client);
+    // console.log(this.#clients.length)
+  }
 
-    getClientId (id: string): Socket {
-        return this.#clients.find(client => client.id === id)
-    }
+  removeClient(id: string) {
+    this.#clients = this.#clients.filter((client) => client.id !== id);
+    // console.log(this.#clients.length)
+  }
+
+  getClientId(id: string): Socket {
+    return this.#clients.find((client) => client.id === id);
+  }
+
+  async createMessage(data: Prisma.ChatCreateInput): Promise<Chat> {
+    return await this.prisma.chat.create({
+      data,
+    });
+  }
+
+  async getMessages(): Promise<Chat[]> {
+    return await this.prisma.chat.findMany();
+  }
 }

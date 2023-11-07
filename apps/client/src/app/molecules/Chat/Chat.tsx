@@ -3,7 +3,7 @@ import { useChat } from './store';
 import Posts from '../../atoms/Posts/Posts';
 import styles from './Chat.module.scss';
 import { io } from 'socket.io-client';
-import { SendHorizontal } from 'lucide-react';
+import { MoreVertical, Search, SendHorizontal } from 'lucide-react';
 
 const socket = io('ws://localhost:3000/chat');
 
@@ -55,6 +55,10 @@ export default function Chat() {
         <div className={styles['chat']}>
           <div className={styles['chat-info']}>
             <p>{selectedUser.user_name}</p>
+            <div className={styles['settings']}>
+              <Search />
+              <MoreVertical />
+            </div>
           </div>
           <Posts postList={postList} />
           <form className={styles['input-form']}>
