@@ -25,7 +25,7 @@ model Message {
 
 model User {
   id       Int       @id @default(autoincrement())
-  name     String?   @db.Char
+  name     String?   @db.VarChar(255)
   email    String    @unique
   messages Message[]
 }

@@ -1,11 +1,7 @@
 export interface User {
-  user_id: number;
-  user_name: string;
-}
-
-export interface ChatListItem {
   id: number;
   name: string;
+  email: string;
 }
 
 export interface ChatStore {
@@ -14,7 +10,7 @@ export interface ChatStore {
 }
 
 export interface SearchFilter {
-  filtered: ChatListItem[];
+  filtered: User[];
   filter: (search: string) => void;
   search: string;
   setSearch: (search: string) => void;

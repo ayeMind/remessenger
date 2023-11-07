@@ -51,10 +51,10 @@ export default function Chat() {
 
   return (
     <main className={styles['chat-container']}>
-      {selectedUser.user_id !== 0 ? (
+      {selectedUser.id !== 0 ? (
         <div className={styles['chat']}>
           <div className={styles['chat-info']}>
-            <p>{selectedUser.user_name}</p>
+            <p>{selectedUser.name}</p>
             <div className={styles['settings']}>
               <Search />
               <MoreVertical />
