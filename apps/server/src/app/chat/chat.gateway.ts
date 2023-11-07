@@ -18,7 +18,7 @@ import { ChatService } from './chat.service';
 
 @WebSocketGateway({
   namespace: 'chat',
-  //  ws://localhost:{port}/chat
+  //    ws://localhost:{port}/chat
   cors: {
     origin: '*',
   },
@@ -29,7 +29,6 @@ export class ChatGateway
   constructor(private chatService: ChatService) {}
   afterInit(server: any) {
     console.log(server);
-    throw new Error('Method not implemented.');
   }
 
   @WebSocketServer() server: Server<ClientToServerListen, ServerToClientListen>;
