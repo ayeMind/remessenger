@@ -4,10 +4,10 @@ import { User, ChatStore } from '../../interfaces';
 export const useChat = create<ChatStore>((set) => ({
   selectedUser: {
     id: 0,
-    name: 'Unknown',
-    email: 'Unknown',
-    password: 'Unknown',
-    avatar: 'Unknown',
+    name: 'Remessenger',
+    email: '',
+    password: '',
+    avatar: '',
   },
   chooseUser: (user: User) =>
     set(() => {

@@ -1,0 +1,27 @@
+@use "../../../styles.scss" as colors;
+
+.chat-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: colors.$additionalColor;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    gap: 12px;
+}
+
+.settings {
+    background-color: transparent;
+    border: none;
+    margin-right: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat-name {
+    margin-left: 12px;
+}
