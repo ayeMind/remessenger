@@ -13,7 +13,7 @@ export interface Message {
 }
 
 export interface ChatStore {
-  user: User;
+  selectedUser: User;
   chooseUser: (user: User) => void;
 }
 

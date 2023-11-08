@@ -25,10 +25,12 @@
 }
 
 .message {
+    position: relative;
     margin-left: 12px;
+    padding-right: 30px;
     padding-left: 8px;
     height: 48px;
-    border-radius: 4%;
+    border-radius: 15px;
     background-color: colors.$additionalColor;
     display: flex;
     align-items: center;
@@ -42,4 +44,11 @@
 .message-text {
     padding-left: 6px;
     padding-right: 24px;
+}
+
+.date {
+    font-size: smaller;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
 }
