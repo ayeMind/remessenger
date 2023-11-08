@@ -29,6 +29,7 @@ model User {
   name     String
   email    String    @unique
   password String    @db.VarChar(255)
+  avatar   String    @default("default.png")
   chats    Chat[]
   messages Message[]
 }

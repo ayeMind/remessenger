@@ -8,17 +8,26 @@ export default function Posts({ postList }: { postList: Message[] }) {
   const { selectedUser } = useChat();
 
   const postListItems = postList.map((item, index) => {
-    if (item.chatId !== selectedUser.id) return null;
-    if (item.chatId === user?.id && item.userId !== user?.id) return null; // Saved Messages
+    if (item.chatId !== selectedUser.id && item.userId !== selectedUser.id)
+      return null;
+    if (item.chatId === item.userId && item.userId !== user?.id) return null; // saved messages (not mine)
+    if (item.chatId !== item.userId && user?.id === selectedUser.id)
+      return null; // saved messages (mine)
 
     const isAuthorClass = user?.id === item.userId ? 'author' : '';
     const date = new Date(item.createdAt);
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
+    const avatarStyle = {
+      backgroundImage: `url(${
+        item.userId === user?.id ? user.avatar : selectedUser.avatar
+      })`,
+    };
+
     return (
       <div className={styles.post} key={index}>
-        <div className={styles.avatar} />
+        <div className={styles.avatar} style={avatarStyle} />
         <div className={`${styles.message} ${styles[isAuthorClass]}`}>
           <p className={styles['message-text']}>{item.text}</p>
           <p className={styles.date}>{`${hours}:${minutes}`}</p>

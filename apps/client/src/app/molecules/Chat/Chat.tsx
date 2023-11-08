@@ -49,12 +49,14 @@ export default function Chat() {
     setMessage('');
   }
 
+  const displayedName = user?.id === selectedUser.id ? 'Saved Messages' : selectedUser.name;
+
   return (
     <main className={styles['chat-container']}>
       {selectedUser.id !== 0 ? (
         <div className={styles['chat']}>
           <div className={styles['chat-info']}>
-            <p>{selectedUser.name}</p>
+            <p>{displayedName}</p>
             <div className={styles['settings']}>
               <Search />
               <MoreVertical />
@@ -67,9 +69,6 @@ export default function Chat() {
               placeholder="Write a message..."
               className={styles['input-message']}
               onChange={(e) => setMessage(e.target.value)}
-              // onKeyDown={(e) => {
-              //   e.key === 'Enter' && messagePost(e);
-              // }}
             />
             <button
               type="submit"

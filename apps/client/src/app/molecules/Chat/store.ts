@@ -7,6 +7,7 @@ export const useChat = create<ChatStore>((set) => ({
     name: 'Unknown',
     email: 'Unknown',
     password: 'Unknown',
+    avatar: 'Unknown',
   },
   chooseUser: (user: User) =>
     set(() => {
@@ -15,6 +16,7 @@ export const useChat = create<ChatStore>((set) => ({
         name: user.name,
         email: user.email,
         password: user.password,
+        avatar: user.avatar,
       };
       return { selectedUser: selectedUser };
     }),
