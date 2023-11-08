@@ -6,6 +6,8 @@
     align-items: center;
     background-color: colors.$additionalColor;
     user-select: none;
+
+    cursor: pointer;
     
     &:hover {
         background-color: colors.$secondAdditionalColor;
@@ -18,6 +20,6 @@
     width: 38px;
     border-radius: 50%;
     background-color: colors.$avatarColor;
-    background-image: url('savedmessages.jpg');
     background-size: contain;
+    background-image: url("default.png");
 }   

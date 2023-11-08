@@ -7,11 +7,13 @@ export default function ChatPreview({
   name,
   email,
   password,
+  avatar,
 }: {
   id: number;
   name: string;
   email: string;
   password: string;
+  avatar: string;
 }) {
   const selectUser = useChat((state) => state.chooseUser);
 
@@ -19,12 +21,27 @@ export default function ChatPreview({
   const displayedName = user?.id === id ? 'Saved Messages' : name;
 
   const openChatClick = () => {
-    selectUser({ id: id, name: name, email: email, password: password });
+    selectUser({
+      id: id,
+      name: name,
+      email: email,
+      password: password,
+      avatar: avatar,
+    });
   };
+
+  const avatarStyle =
+    user?.id !== id
+      ? {
+          backgroundImage: `url(${avatar})`,
+        }
+      : {
+          backgroundImage: 'url(savedmessages.jpg)',
+        };
 
   return (
     <div onClick={openChatClick} className={styles['chat-preview']}>
-      <div className={styles['avatar-template']} />
+      <div className={styles['avatar-template']} style={avatarStyle} />
       <p> {displayedName}</p>
     </div>
   );

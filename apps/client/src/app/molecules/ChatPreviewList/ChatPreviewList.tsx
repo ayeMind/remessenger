@@ -9,6 +9,7 @@ export default function ChatPreviewList({ chatList }: { chatList: User[] }) {
       name={item.name}
       email={item.email}
       password={item.password}
+      avatar={item.avatar}
     />
   ));
 
