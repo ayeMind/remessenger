@@ -7,8 +7,8 @@ export interface User {
 
 export interface Message {
   text: string;
-  Author: number;
-  Chat: number;
+  userId: number;
+  chatId: number;
   createdAt: Date;
 }
 

@@ -58,8 +58,11 @@
     background-color: colors.$mainColor;
     color: colors.$textColor;
     border: 1px solid colors.$secondAdditionalColor;
+    box-shadow: inset 0 0 0 50px colors.$secondAdditionalColor;
 
     &:active {
         border: 1px solid colors.$textColor;
     }
+
+
 }

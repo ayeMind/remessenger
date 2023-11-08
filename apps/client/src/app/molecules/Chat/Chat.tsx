@@ -12,7 +12,6 @@ const socket = io('ws://localhost:3000/chat');
 
 export default function Chat() {
   const [postList, setPostList] = useState<Message[]>([]);
-  const [isConnected, setIsConnected] = useState(socket.connected);
   const [message, setMessage] = useState('');
   const selectedUser = useChat((state) => state.user);
   const { user } = useLogin();
@@ -23,27 +22,14 @@ export default function Chat() {
       console.log(res);
     });
 
-    function onConnect() {
-      setIsConnected(true);
-      console.log('You connect!');
-    }
-
-    function onDisconnect() {
-      setIsConnected(false);
-    }
-
     function onRecMessage(message: Message) {
       setPostList((prev) => [...prev, message]);
     }
 
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-
     socket.on('recMessage', onRecMessage);
 
     return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
+      socket.off('recMessage', onRecMessage);
     };
   }, []);
 
@@ -56,9 +42,9 @@ export default function Chat() {
 
     socket.emit('sendMessage', {
       text: message,
-      Author: user?.id,
-      Chat: selectedUser.id,
-      createdAt: Date.now(),
+      userId: user?.id,
+      chatId: selectedUser.id,
+      createdAt: new Date(),
     });
     setMessage('');
   }

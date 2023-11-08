@@ -37,9 +37,10 @@ export default function WithoutLogin() {
     <div className={styles['page']}>
       <div className={styles['popup']}>
         <h2 className={styles['title']}>Вход</h2>
-        <form className={styles['login-form']}>
+        <form className={styles['login-form']} autoComplete="off">
           <input
             type="email"
+            autoComplete="new-email"
             placeholder="Input email"
             className={styles['login-input']}
             value={email}
@@ -47,6 +48,7 @@ export default function WithoutLogin() {
           />
           <input
             type="password"
+            autoComplete="new-password"
             placeholder="Input password"
             className={styles['login-input']}
             value={password}
