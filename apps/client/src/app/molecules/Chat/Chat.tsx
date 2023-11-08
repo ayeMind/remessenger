@@ -13,7 +13,7 @@ const socket = io('ws://localhost:3000/chat');
 export default function Chat() {
   const [postList, setPostList] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
-  const selectedUser = useChat((state) => state.user);
+  const { selectedUser } = useChat();
   const { user } = useLogin();
 
   useEffect(() => {

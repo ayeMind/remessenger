@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { User, ChatStore } from '../../interfaces';
 
 export const useChat = create<ChatStore>((set) => ({
-  user: {
+  selectedUser: {
     id: 0,
     name: 'Unknown',
     email: 'Unknown',
@@ -16,6 +16,6 @@ export const useChat = create<ChatStore>((set) => ({
         email: user.email,
         password: user.password,
       };
-      return { user: selectedUser };
+      return { selectedUser: selectedUser };
     }),
 }));

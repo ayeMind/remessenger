@@ -16,6 +16,8 @@
     margin: 12px 6px 12px 12px;
     height: 38px;
     width: 38px;
-    background-color: colors.$avatarColor;
     border-radius: 50%;
-}
+    background-color: colors.$avatarColor;
+    background-image: url('savedmessages.jpg');
+    background-size: contain;
+}   
