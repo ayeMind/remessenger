@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { User, SearchFilter } from '../../interfaces';
+import { User, SearchFilter } from '../interfaces';
 
 export const useSearchFilter = create<SearchFilter>((set) => ({
   filtered: [],

@@ -1,5 +1,5 @@
-import { useChat } from '../../molecules/Chat/store';
-import { useLogin } from '../../pages/store';
+import { useChat } from '../../stores/chat';
+import { useLogin } from '../../stores/login';
 import styles from './ChatPreview.module.scss';
 
 export default function ChatPreview({

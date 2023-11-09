@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './WithoutLogin.module.scss';
-import { useLogin } from '../store';
+import { useLogin } from '../../stores/login';
 import getUserList from '../../api/getUserList';
 import { User } from '../../interfaces';
 

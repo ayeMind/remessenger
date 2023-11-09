@@ -1,6 +1,6 @@
 import { Message } from '../../interfaces';
-import { useChat } from '../../molecules/Chat/store';
-import { useLogin } from '../../pages/store';
+import { useChat } from '../../stores/chat';
+import { useLogin } from '../../stores/login';
 import styles from './Posts.module.scss';
 
 export default function Posts({ postList }: { postList: Message[] }) {

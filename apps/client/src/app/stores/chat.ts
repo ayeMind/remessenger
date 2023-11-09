@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { User, ChatStore } from '../../interfaces';
+import { User, ChatStore } from '../interfaces';
 
 export const useChat = create<ChatStore>((set) => ({
   selectedUser: {

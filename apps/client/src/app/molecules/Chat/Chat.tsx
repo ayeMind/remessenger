@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useChat } from './store';
+import { useChat } from '../../stores/chat';
 import { io } from 'socket.io-client';
-import { useLogin } from '../../pages/store';
+import { useLogin } from '../../stores/login';
 import { Message } from '../../interfaces';
 import Posts from '../../atoms/Posts/Posts';
 import getMessages from '../../api/getMessages';
@@ -16,6 +16,12 @@ export default function Chat() {
   const [message, setMessage] = useState('');
   const { selectedUser, chooseUser } = useChat();
   const { user } = useLogin();
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    console.log(file);
+  };
 
   useEffect(() => {
     getMessages().then((res) => {
@@ -72,7 +78,12 @@ export default function Chat() {
           <Settings />
           <Posts postList={postList} />
           <form className={styles['input-form']}>
-            <Paperclip />
+            <div className={styles['select-file-btn']}>
+              <input type="file" onChange={handleFileChange} />
+              <label htmlFor="file">
+                <Paperclip />
+              </label>
+            </div>
             <input
               value={message}
               placeholder="Write a message..."

@@ -1,6 +1,6 @@
 import getUserList from '../../api/getUserList';
 import { User } from '../../interfaces';
-import { useSearchFilter } from './store';
+import { useSearchFilter } from '../../stores/searchFilter';
 import styles from './/SearchChat.module.scss';
 
 export default function SearchChat() {

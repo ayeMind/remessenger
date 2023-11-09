@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchChat from '../../atoms/SearchChat/SearchChat';
 import styles from './SelectChatPanel.module.scss';
 import ChatPreviewList from '../../molecules/ChatPreviewList/ChatPreviewList';
-import { useSearchFilter } from '../../atoms/SearchChat/store';
+import { useSearchFilter } from '../../stores/searchFilter';
 import getUserList from '../../api/getUserList';
 
 export default function SelectChatPanel() {

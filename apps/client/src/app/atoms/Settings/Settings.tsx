@@ -1,6 +1,6 @@
 import { Menu, Search } from 'lucide-react';
-import { useLogin } from '../../pages/store';
-import { useChat } from '../../molecules/Chat/store';
+import { useLogin } from '../../stores/login';
+import { useChat } from '../../stores/chat';
 import styles from './Settings.module.scss';
 
 export default function Settings() {
