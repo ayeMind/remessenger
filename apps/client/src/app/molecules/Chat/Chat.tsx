@@ -1,3 +1,4 @@
+import { Paperclip, SendHorizontal } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useChat } from '../../stores/chat';
 import { io } from 'socket.io-client';
@@ -6,8 +7,8 @@ import { Message } from '../../interfaces';
 import Posts from '../../atoms/Posts/Posts';
 import getMessages from '../../api/getMessages';
 import styles from './Chat.module.scss';
-import { Paperclip, SendHorizontal } from 'lucide-react';
 import Settings from '../../atoms/Settings/Settings';
+import axios from 'axios';
 
 const socket = io('ws://localhost:3000/chat');
 
@@ -16,11 +17,28 @@ export default function Chat() {
   const [message, setMessage] = useState('');
   const { selectedUser, chooseUser } = useChat();
   const { user } = useLogin();
+  const [file, setFile] = useState({})
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    console.log(file);
+    const tempFile = event.target.files?.[0]
+    if (!tempFile) return;
+    setFile({
+      'lastModified'     : tempFile.lastModified,
+      'name'             : tempFile.name,
+      'size'             : tempFile.size,
+      'type'             : tempFile.type 
+   });
+
+    const formData = new FormData();
+    formData.append('file', tempFile);
+    
+    axios.post('http://localhost:3000/files', formData)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -67,6 +85,7 @@ export default function Chat() {
       userId: user?.id,
       chatId: selectedUser.id,
       createdAt: new Date(),
+      file: JSON.stringify(file)
     });
     setMessage('');
   }

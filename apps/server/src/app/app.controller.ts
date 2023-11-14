@@ -1,8 +1,12 @@
-import { Controller } from '@nestjs/common';
-
-import { AppService } from './app.service';
+import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  @Post('files')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file) {
+    console.log(file); 
+    return { message: 'File uploaded successfully' };
+  }
 }

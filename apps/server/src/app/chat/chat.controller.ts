@@ -11,4 +11,5 @@ export class ChatController {
     const messages = await this.appService.getMessages();
     res.json(messages);
   }
+
 }

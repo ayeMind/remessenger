@@ -18,6 +18,7 @@ model Message {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
   text      String   @db.Text
+  file      String
   Author    User?    @relation(fields: [userId], references: [id])
   userId    Int?
   Chat      Chat?    @relation(fields: [chatId], references: [id])

@@ -10,6 +10,7 @@ export interface Message {
   text: string;
   userId: number;
   chatId: number;
+  file: string;
   createdAt: Date;
 }
 

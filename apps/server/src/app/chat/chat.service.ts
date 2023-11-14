@@ -32,4 +32,5 @@ export class ChatService {
   async getMessages(): Promise<Chat[]> {
     return await this.prisma.message.findMany();
   }
+
 }

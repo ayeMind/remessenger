@@ -9,8 +9,9 @@ CREATE TABLE "Chat" (
 CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-    "title" VARCHAR(255) NOT NULL,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "text" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
     "userId" INTEGER,
     "chatId" INTEGER,
 
@@ -22,6 +23,8 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "password" VARCHAR(255) NOT NULL,
+    "avatar" TEXT NOT NULL DEFAULT 'default.png',
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
