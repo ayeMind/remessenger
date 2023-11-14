@@ -29,6 +29,7 @@ export default function Chat() {
       'type'             : tempFile.type 
    });
 
+   console.log(file)
     const formData = new FormData();
     formData.append('file', tempFile);
     
@@ -80,12 +81,15 @@ export default function Chat() {
       return;
     }
 
+    const date = new Date()
+    const fileName = (file.name) ? `${date.toUTCString()}_${file.name}` : ''
+
     socket.emit('sendMessage', {
       text: message,
       userId: user?.id,
       chatId: selectedUser.id,
-      createdAt: new Date(),
-      file: JSON.stringify(file)
+      createdAt: date,
+      file: fileName,
     });
     setMessage('');
   }
